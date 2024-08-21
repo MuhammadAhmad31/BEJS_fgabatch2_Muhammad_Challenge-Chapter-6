@@ -25,11 +25,14 @@ jobs:
         with:
           node-version: 18.20.2
 
+      - name: Install dependencies
+        run: npm install --omit=dev
+
       - name: Install Railway CLI
-        run: npm i -g @railway/cli
+        run: npm install -g @railway/cli
 
       - name: Deploy
         run: railway up --service service-be
 
       - name: Apply migrations
-        run: railway run --service service-be npx prisma migrate deploy
+        run: npx prisma migrate deploy
