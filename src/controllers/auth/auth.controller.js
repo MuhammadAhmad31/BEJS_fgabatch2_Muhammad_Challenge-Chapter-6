@@ -40,27 +40,6 @@ export const login = async (req, res) => {
   }
 };
 
-export const googleAuth = (req, res) => {
-  if (req.user) {
-    const token = jwt.sign(
-      {
-        id: req.user.id,
-        username: req.user.username,
-        name: req.user.displayName,
-        role: "USER",
-      },
-      JWT_SECRET,
-      { expiresIn: '1d' }
-    );
-
-    handleSuccessResponse(res, "Login successful.", {
-      token,
-    });
-  } else {
-    handleErrorResponse(res, "Login failed.");
-  }
-};
-
 export const logout = async (req, res) => {
   handleSuccessResponse(res, "Logout successful.");
 };

@@ -17,28 +17,3 @@ export const findUserById = async (userId) => {
     include: { role: true },
   });
 }
-
-export const findOrCreateUser = async (profile) => {
-  let user = await prisma.user.findUnique({
-    where: { id: profile.id },
-  });
-
-  let role = await prisma.role.findUnique({
-    where: { name: 'USER' },
-  });
-
-  // console.log(profile);
-  if (!user) {
-    user = await prisma.user.create({
-      data: {
-        id: profile.id,
-        username: profile.displayName,
-        roleId: role.id,
-        name: profile.displayName,
-        password: "",
-      },
-    });
-  }
-
-  return user;
-};
