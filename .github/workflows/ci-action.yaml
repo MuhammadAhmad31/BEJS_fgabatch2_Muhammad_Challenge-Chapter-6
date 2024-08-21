@@ -30,3 +30,6 @@ jobs:
 
       - name: Deploy
         run: railway up --service service-be
+
+      - name: Setup database
+        run: railway run --service service-be npx prisma migrate deploy
