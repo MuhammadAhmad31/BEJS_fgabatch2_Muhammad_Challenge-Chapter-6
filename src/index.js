@@ -3,7 +3,6 @@ import v1Routes from "./routes/v1/index.js";
 import { handleErrorResponse } from "./utils/handleResponse.js";
 import { PORT } from "./config/env.js";
 import session from "express-session";
-import passport from "./config/passport.js";
 
 const app = express();
 
@@ -18,9 +17,6 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use("/api", v1Routes);
 
