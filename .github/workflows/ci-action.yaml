@@ -36,6 +36,3 @@ jobs:
 
       - name: Apply migrations
         run: railway run --service service-be npx prisma migrate deploy
-
-      - name: Seed database
-        run: railway run --service service-be npm run seed
